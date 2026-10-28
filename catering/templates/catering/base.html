@@ -1,0 +1,18 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% block title %}Yuhm Yuhm Catering Services{% endblock %}</title>
+<meta name="description" content="Continental and intercontinental catering for weddings, corporate events and parties.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'catering/css/style.css' %}">
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">Yuhm Yuhm</a><nav><a href="#menu">Menu</a><a class="hide" href="#events">Events</a><a class="hide" href="#how">How it works</a><a href="#book">Book</a></nav></div></header>
+<main id="top">{% block content %}{% endblock %}</main>
+<footer class="site"><div class="wrap"><span>Yuhm Yuhm Catering Services</span><span>Continental and intercontinental catering</span></div></footer>
+<script src="{% static 'catering/js/main.js' %}"></script>
+</body>
+</html>

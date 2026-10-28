@@ -1,0 +1,56 @@
+{% extends "catering/base.html" %}
+{% block content %}
+<div class="hero"><div class="wrap">
+<div><h1>Yuhm <span>Yuhm</span></h1>
+<p>Catering Services. Continental and intercontinental dishes, cooked fresh and served on time.</p>
+<a class="btn" href="#book">Get a quote</a><a class="btn alt" href="#menu">See the menu</a></div>
+<div class="plate" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>
+</div></div>
+
+<section id="menu"><div class="wrap">
+<h2>One kitchen, a world of plates</h2>
+<p class="lead">Pick from our continental classics or travel further with intercontinental favourites. Mix both on one menu for your event.</p>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" aria-selected="true" data-t="con">Continental</button>
+<button class="tab" role="tab" aria-selected="false" data-t="int">Intercontinental</button></div>
+<ul class="dishes" data-panel="con">{% include "catering/_dishes.html" with dishes=continental %}</ul>
+<ul class="dishes" data-panel="int" hidden>{% include "catering/_dishes.html" with dishes=intercontinental %}</ul>
+</div></section>
+
+<section class="band" id="events"><div class="wrap">
+<h2>Food for every kind of gathering</h2>
+<p class="lead">From twenty guests to several hundred, we plan the menu, cook, set up and serve.</p>
+<div class="events">
+<div class="ev"><h3>Weddings</h3><p>Multi-course menus, cocktail bites and plated or buffet service for your big day.</p></div>
+<div class="ev"><h3>Corporate events</h3><p>Boxed lunches, conference buffets and staff parties delivered on schedule.</p></div>
+<div class="ev"><h3>Birthdays and parties</h3><p>Party trays, small chops, grills and desserts sized to your guest list.</p></div>
+</div></div></section>
+
+<section id="how"><div class="wrap">
+<h2>From enquiry to empty plates</h2>
+<ol class="steps">
+<li><b>Tell us the plan</b><p>Share your date, guest count and venue.</p></li>
+<li><b>Choose your menu</b><p>We suggest dishes and send a clear quote.</p></li>
+<li><b>Confirm</b><p>Pay a deposit to lock in your date.</p></li>
+<li><b>Enjoy</b><p>We cook, deliver, set up and serve.</p></li>
+</ol></div></section>
+
+{% if testimonials %}<section class="band"><div class="wrap">
+<h2>What our guests say</h2><br>
+<div class="quotes">
+{% for t in testimonials %}<blockquote>“{{ t.quote }}”<footer>{{ t.author }}</footer></blockquote>
+{% endfor %}</div></div></section>{% endif %}
+
+<section id="book"><div class="wrap">
+<h2>Book Yuhm Yuhm</h2>
+<p class="lead">Fill this in and it opens WhatsApp with your details ready to send.</p>
+<form method="post" action="{% url 'catering:home' %}#book">{% csrf_token %}
+<label>{{ form.name.label }}{{ form.name }}{{ form.name.errors }}</label>
+<label>{{ form.event_type.label }}{{ form.event_type }}{{ form.event_type.errors }}</label>
+<label>{{ form.event_date.label }}{{ form.event_date }}{{ form.event_date.errors }}</label>
+<label>{{ form.guests.label }}{{ form.guests }}{{ form.guests.errors }}</label>
+<label class="full">{{ form.cuisine.label }}{{ form.cuisine }}{{ form.cuisine.errors }}</label>
+<label class="full">{{ form.notes.label }}{{ form.notes }}{{ form.notes.errors }}</label>
+<div class="full"><button class="btn" type="submit">Send on WhatsApp</button></div>
+</form></div></section>
+{% endblock %}

@@ -1,0 +1,2 @@
+{% for d in dishes %}<li><b>{{ d.name }}{% if d.is_popular %}<em>Popular</em>{% endif %}</b><span>{{ d.description }}</span></li>
+{% empty %}<li><span>Menu coming soon.</span></li>{% endfor %}

@@ -17,3 +17,4 @@ Set DJANGO_SECRET_KEY, DJANGO_DEBUG=0, DJANGO_ALLOWED_HOSTS, DJANGO_CSRF_ORIGINS
 and WHATSAPP_NUMBER. Run `python manage.py collectstatic --noinput`, then serve with
 `gunicorn yuhm_yuhm.wsgi`.
 # Yuhmyuhm-Catering-Service
+# Yuhmyuhm-Catering-Service

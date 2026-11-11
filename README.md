@@ -19,3 +19,4 @@ and WHATSAPP_NUMBER. Run `python manage.py collectstatic --noinput`, then serve 
 `gunicorn yuhm_yuhm.wsgi`.
 # Yuhmyuhm-Catering-Service
 # Yuhmyuhm-Catering-Service
+# Yuhmyuhm

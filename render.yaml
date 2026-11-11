@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: yuhm-yuhm-catering
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && DATABASE_URL=sqlite:////tmp/render-collectstatic.db python manage.py collectstatic --no-input
+    startCommand: python manage.py migrate --noinput && gunicorn yuhm_yuhm.wsgi:application --bind 0.0.0.0:$PORT
+    healthCheckPath: /
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "0"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: .onrender.com
+      - key: DATABASE_URL
+        sync: false

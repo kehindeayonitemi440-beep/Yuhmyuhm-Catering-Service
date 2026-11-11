@@ -9,7 +9,7 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,test
 CSRF_TRUSTED_ORIGINS = [o for o in os.environ.get("DJANGO_CSRF_ORIGINS", "").split(",") if o]
 
 # WhatsApp number: country code first, digits only, e.g. 2348012345678
-WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "2340000000000")
+WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "2349123323596")
 
 INSTALLED_APPS = [
     "django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes",

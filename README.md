@@ -7,7 +7,8 @@
     python manage.py migrate
     python manage.py seed_menu                        # starter dishes and sample reviews
     python manage.py createsuperuser
-    WHATSAPP_NUMBER=2348012345678 python manage.py runserver
+    WHATSAPP_NUMBER=2349123323596 
+    python manage.py runserver
 
 Site: http://127.0.0.1:8000/   Admin: http://127.0.0.1:8000/admin/
 Manage dishes, reviews and booking enquiries in the admin.

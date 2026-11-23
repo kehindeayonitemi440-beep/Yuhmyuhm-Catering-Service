@@ -1,0 +1,3 @@
+<div class="opts">{% for key, label, amount in options %}
+<label><input type="radio" name="option" value="{{ key }}" required{% if forloop.first %} checked{% endif %}> {{ label }}: ₦{{ amount|floatformat:"2g" }}</label>
+{% endfor %}</div>

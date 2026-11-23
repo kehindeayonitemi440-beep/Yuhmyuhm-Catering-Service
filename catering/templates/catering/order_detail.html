@@ -1,0 +1,54 @@
+{% extends "catering/base.html" %}
+{% block title %}Your order · Yuhm Yuhm Catering Services{% endblock %}
+{% block content %}
+<section><div class="wrap narrow">
+<h2>Hello {{ enquiry.name }}</h2>
+<p class="lead">Order reference <b>{{ enquiry.reference }}</b>. Bookmark this page: it is your private payment link.</p>
+
+<div class="panel">
+<h3>Your event</h3>
+<p>{{ enquiry.event_type }}{% if enquiry.event_date %} on {{ enquiry.event_date|date:"j F Y" }}{% endif %}{% if enquiry.guests %} · {{ enquiry.guests }} guests{% endif %} · {{ enquiry.cuisine }}</p>
+{% if enquiry.quoted_amount is None %}
+<p><span class="badge">Awaiting quote</span></p>
+<p>We’ll prepare your quote and update this page. To speed things up, message us on WhatsApp.</p>
+<a class="btn" href="{{ wa_url }}" target="_blank" rel="noopener">Chat on WhatsApp</a>
+{% else %}
+<table class="tbl">
+<tr><td>Quote</td><td>₦{{ enquiry.quoted_amount|floatformat:"2g" }}</td></tr>
+<tr><td>Paid so far</td><td>₦{{ enquiry.amount_paid|floatformat:"2g" }}</td></tr>
+<tr><td>Balance due</td><td>₦{{ enquiry.balance_due|floatformat:"2g" }}</td></tr>
+</table>
+<p><span class="badge">{{ enquiry.payment_status }}</span></p>
+{% endif %}
+</div>
+
+{% if history %}<div class="panel"><h3>Payments</h3>
+<table class="tbl">{% for p in history %}
+<tr><td>{{ p.created_at|date:"j M Y" }} · {{ p.get_method_display }} · {{ p.get_status_display }}</td><td>₦{{ p.amount|floatformat:"2g" }}</td></tr>
+{% endfor %}</table></div>{% endif %}
+
+{% if options %}
+{% if paystack_enabled %}
+<div class="panel">
+<h3>Pay online</h3>
+<p>Card, bank or USSD through Paystack. You’ll return here when done.</p>
+<form method="post" action="{% url 'catering:pay_online' enquiry.reference %}">{% csrf_token %}
+{% include "catering/_options.html" %}
+<div><button class="btn" type="submit">Pay securely</button></div>
+</form></div>
+{% endif %}
+
+<div class="panel">
+<h3>Pay by bank transfer</h3>
+<div class="bank">{{ bank.name }}<br><b>{{ bank.number }}</b><br>{{ bank.account }}</div>
+<p>Use <b>{{ enquiry.reference }}</b> as the transfer narration, then tell us about your transfer so we can confirm it.</p>
+<form method="post" action="{% url 'catering:pay_transfer' enquiry.reference %}" enctype="multipart/form-data">{% csrf_token %}
+{% include "catering/_options.html" %}
+<label>Account name you paid from{{ transfer_form.sender_name }}</label>
+<label>Transfer reference or note (optional){{ transfer_form.transfer_note }}</label>
+<label>Proof of payment (optional, JPG, PNG or PDF){{ transfer_form.proof }}</label>
+<div><button class="btn" type="submit">I’ve made the transfer</button></div>
+</form></div>
+{% endif %}
+</div></section>
+{% endblock %}

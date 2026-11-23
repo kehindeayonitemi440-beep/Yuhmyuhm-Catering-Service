@@ -22,16 +22,16 @@
 <p class="lead">From twenty guests to several hundred, we plan the menu, cook, set up and serve.</p>
 <div class="events">
 <div class="ev"><h3>Weddings</h3><p>Multi-course menus, cocktail bites and plated or buffet service for your big day.</p></div>
-<div class="ev"><h3>Corporate events</h3><p>Boxed lunches, conference meals and staff parties delivered on schedule.</p></div>
-<div class="ev"><h3>Birthdays and parties</h3><p>Party trays, small chops, grills  sized to your guest list.</p></div>
+<div class="ev"><h3>Corporate events</h3><p>Boxed lunches, conference buffets and staff parties delivered on schedule.</p></div>
+<div class="ev"><h3>Birthdays and parties</h3><p>Party trays, small chops, grills and desserts sized to your guest list.</p></div>
 </div></div></section>
 
 <section id="how"><div class="wrap">
 <h2>From enquiry to empty plates</h2>
 <ol class="steps">
-<li><b>Tell us the plan</b><p>Share your date, guest count and venue.</p></li>
+<li><b>Tell us the plan</b><p>Send the form with your date and guest count.</p></li>
 <li><b>Choose your menu</b><p>We suggest dishes and send a clear quote.</p></li>
-<li><b>Confirm</b><p>Pay a deposit to lock in your date.</p></li>
+<li><b>Confirm</b><p>Pay a deposit or in full, online or by bank transfer.</p></li>
 <li><b>Enjoy</b><p>We cook, deliver, set up and serve.</p></li>
 </ol></div></section>
 
@@ -42,15 +42,17 @@
 {% endfor %}</div></div></section>{% endif %}
 
 <section id="book"><div class="wrap">
-<h2>To Book Yuhm Yuhm</h2>
-<p class="lead">Fill this in and it opens WhatsApp with your details ready to send.</p>
+<h2>Book Yuhm Yuhm</h2>
+<p class="lead">Tell us about your event. You’ll get a private order page where you can chat with us and, once your quote is ready, pay online or by bank transfer.</p>
 <form method="post" action="{% url 'catering:home' %}#book">{% csrf_token %}
 <label>{{ form.name.label }}{{ form.name }}{{ form.name.errors }}</label>
+<label>{{ form.email.label }}{{ form.email }}{{ form.email.errors }}</label>
+<label>{{ form.phone.label }}{{ form.phone }}{{ form.phone.errors }}</label>
 <label>{{ form.event_type.label }}{{ form.event_type }}{{ form.event_type.errors }}</label>
 <label>{{ form.event_date.label }}{{ form.event_date }}{{ form.event_date.errors }}</label>
 <label>{{ form.guests.label }}{{ form.guests }}{{ form.guests.errors }}</label>
 <label class="full">{{ form.cuisine.label }}{{ form.cuisine }}{{ form.cuisine.errors }}</label>
 <label class="full">{{ form.notes.label }}{{ form.notes }}{{ form.notes.errors }}</label>
-<div class="full"><button class="btn" type="submit">Send on WhatsApp</button></div>
+<div class="full"><button class="btn" type="submit">Request my quote</button></div>
 </form></div></section>
 {% endblock %}

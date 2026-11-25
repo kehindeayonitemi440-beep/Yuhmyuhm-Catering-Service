@@ -49,7 +49,7 @@ class Enquiry(models.Model):
 
     reference = models.SlugField(max_length=20, unique=True, default=new_order_ref, editable=False)
     name = models.CharField("Your name", max_length=80)
-    email = models.EmailField("Email")
+    email = models.EmailField("Email", null=True)
     phone = models.CharField("Phone (optional)", max_length=25, blank=True)
     event_type = models.CharField("Event type", max_length=30, choices=EVENTS)
     event_date = models.DateField("Event date", null=True, blank=True)

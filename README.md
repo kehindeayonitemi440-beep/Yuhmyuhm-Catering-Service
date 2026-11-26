@@ -29,7 +29,7 @@
 | DEPOSIT_PERCENT | Default 50 |
 | DJANGO_SECRET_KEY, DJANGO_DEBUG, DJANGO_ALLOWED_HOSTS, DJANGO_CSRF_ORIGINS | Production settings |
 
-## Paystack setup
+## Paystack setup`
 In the Paystack dashboard (Settings > API Keys & Webhooks) set the webhook URL to
 `https://YOUR-DOMAIN/paystack/webhook/`. Test with test keys first.
 
